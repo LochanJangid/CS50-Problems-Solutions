@@ -80,32 +80,55 @@ bool vote(string name)
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
-    // TODO
-    int counter[MAX] = {0,0,0,0,0,0,0,0,0};
+
+    // Sweet method
+    
+    int maxVote = 0;
     for (int i = 0; i < candidate_count; i++)
     {
-        for (int j = 0; j < candidate_count; j++)
-        {
-      
-            if(candidates[i].votes > candidates[j].votes){
-                counter[i]++;
-            }
-        }
+        if (candidates[i].votes > maxVote)
+            maxVote = candidates[i].votes;
     }
 
     for (int i = 0; i < candidate_count; i++)
     {
-        int checker = 0;
-        for (int j = 0; j < candidate_count; j++)
-        {
-            if(counter[i] >= counter[j]){
-                checker++;
-            }
-        }
-
-        if(checker == candidate_count){
+        if (candidates[i].votes == maxVote)
             printf("%s\n", candidates[i].name);
-        }
     }
+
+   /**** // first method that's too long bro 🤷‍♂️ ******
+    //      **** (that's use counter and checker)
+
+          int counter[MAX] = {0,0,0,0,0,0,0,0,0};
+
+        // calculate who have how many votes
+        for (int i = 0; i < candidate_count; i++)
+        {
+            for (int j = 0; j < candidate_count; j++)
+            {
+
+                if(candidates[i].votes > candidates[j].votes){
+                    counter[i]++;
+                }
+            }
+        }
+        // To check who has won from how many candidates
+
+        for (int i = 0; i < candidate_count; i++)
+        {
+            int checker = 0;
+            for (int j = 0; j < candidate_count; j++)
+            {
+                if(counter[i] >= counter[j]){
+                    checker++;
+                }
+            }
+
+            if(checker == candidate_count){
+                printf("%s\n", candidates[i].name);
+            }
+        }
+**/
+
     return;
 }
