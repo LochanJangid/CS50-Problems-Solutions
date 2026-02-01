@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-float length; // length of text
+#include <ctype.h>
+
 
 int main(){
     char text[100];
@@ -10,26 +11,30 @@ int main(){
     printf("Text: ");
     fgets(text, sizeof(text), stdin); // for read all text input
 
-    int words = 1;
-    int letters = -1;
+    int words = 0;
     int sentences = 0;
+    int letters = 0;
 
-    length = strlen(text);
+    int length = strlen(text);
+    char ch;
 
     for(int i = 0; i < length; i++){
-        if(text[i] == ' '){
-            words++;
-        }else if(text[i] == '.' || text[i] == '?' || text[i] == '!'){
-            sentences++;
-        }
-        else{
+        ch = text[i];
+        if(isalpha(ch)){
             letters++;
+            if(i == 0 || text[i-1] == ' '){
+                words++;
+            }
+        }
+        else if(ch == '.' || ch == '?' || ch == '!'){
+            sentences++;
         }
     }
 
-    float L = letters / ( float ) words;
-    float S = sentences / ( float ) words;
-    int index = round(5.88 * L + 29.6 * S - 15.8);
+    float L = letters / ( float ) words * 100;
+    float S = sentences / ( float ) words * 100;
+    
+    int index = round(0.0588 * L - 0.296 * S - 15.8);
 
     if(index < 1){
         printf("Before Grade 1");
@@ -38,6 +43,6 @@ int main(){
         printf("Grade 16+");
     }
     else{
-    printf("Your Grade is %d", index);
+    printf("Grade %d", index);
     }
 }
