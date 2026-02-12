@@ -10,7 +10,7 @@ It is created **only for learning and practice**.
 - Code may change as I learn and improve
 
 ## Purpose
-- Practice C programming
+- Practice C & programming
 - Understand algorithms and memory concepts
 - Learn by experimenting freely
 
