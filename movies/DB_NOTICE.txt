@@ -1,0 +1,3 @@
+For movies.db
+-- Download the distribution code From CS50 Site (https://cs50.harvard.edu/x/psets/7/movies/)
+-- or download https://cdn.cs50.net/2026/x/psets/7/movies.zip
