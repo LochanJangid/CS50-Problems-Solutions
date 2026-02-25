@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+
+                const button = document.querySelectorAll('.option');
+                const result_text = document.querySelector('#result_text');
+                answer_1 = '7 people per 1 cow';
+                button.forEach((btn)=>{
+                    btn.addEventListener('click', function(){
+                        // Reset all buttons to original state
+                        button.forEach((b)=>{
+                            b.style.backgroundColor = '';
+                            b.style.color = '';
+                        });
+                        
+                        if (this.textContent == answer_1){
+                            result_text.innerHTML = 'Correct!'
+                            result_text.style.color = 'green';
+                            this.style.backgroundColor = 'green';
+                            this.style.color = 'white';
+                        }
+                        else{
+                            result_text.innerHTML = 'inCorrect!'
+                            result_text.style.color = 'red';
+                            this.style.backgroundColor = 'red';
+                            this.style.color = 'white';
+                        }
+                    })
+                })
+                const checkAnswer = document.querySelector('#checkAnswer');
+                
+                checkAnswer.addEventListener('click', function(){
+                    const user_answer = document.querySelector('#user_answer').value;
+                    const result_text_2 = document.querySelector('#result_text_2');
+                    if (user_answer == 'india' || user_answer == 'India'){
+                        result_text_2.innerHTML = 'Correct!'
+                        result_text_2.style.color = 'green';
+                        checkAnswer.style.backgroundColor = 'green';
+                        checkAnswer.style.color = 'white';
+                    }
+                    else{
+                        result_text_2.innerHTML = 'inCorrect!'
+                        result_text_2.style.color = 'red';
+                        checkAnswer.style.backgroundColor = 'red';
+                        checkAnswer.style.color = 'white';
+                    }
+                });
+            });
+
+                
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                 <h3>
+                    what is the approximate ratio of people to cow in india?
+                 </h3>
+                 <button class="option">1 people per 1 cow</button>
+                 <button class="option">7 people per 1 cow</button>
+                 <button class="option">20 people per 1 cow</button>
+                 <button class="option">100 people per 1 cow</button>
+                 <p id="result_text"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+
+                <h3>
+                   In which country is it illegal to leave your chai unattended for too long, as it might get cold and offend your taste buds?
+                </h3>
+                <input type="text" id="user_answer"/>
+                <button type="submit" id="checkAnswer">Check Answer</button>
+                <p id="result_text_2"></p>
+            </div>
+        </div>
+    </body>
+</html>
